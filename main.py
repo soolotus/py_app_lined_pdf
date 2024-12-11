@@ -13,16 +13,18 @@ for index, row in df.iterrows():
     pdf.cell(w=0, h=12, txt=row["Topic"], align="l", ln=1)
     pdf.line(10, 22, 205, 22, )
     pdf.set_text_color(200, 200, 200)
-    for i in range(24):
-        adding_num = (i+1)*10
-        pdf.ln(adding_num)
-        pdf.line(10, 22+adding_num, 205, 22+adding_num)
-    for i in range(row["Pages"]-1):
+
+
+
+    for i in range(22, 270, 10):
+        pdf.line(10, i, 205, i)
+
+    for y in range(row["Pages"]-1):
         pdf.add_page()
-        for i in range(24):
-            adding_num = (i + 1) * 10
-            pdf.ln(adding_num)
-            pdf.line(10, 12 + adding_num, 205, 12 + adding_num)
+
+        for y in range(12, 270, 10):
+            pdf.line(10, y, 205, y)
+
 
 
 pdf.output("output.pdf")
